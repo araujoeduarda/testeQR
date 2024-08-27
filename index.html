@@ -24,14 +24,26 @@
             return audios[Math.floor(Math.random() * audios.length)];
         }
 
-        // Gerar QR Code que aponta diretamente para o arquivo de áudio
-        const audioUrl = getRandomAudio();
+        // Gerar QR Code que aponta para a URL da página atual com um parâmetro de áudio aleatório
+        const audioUrl = `${window.location.origin}/index.html?audio=${encodeURIComponent(getRandomAudio())}`;
 
         new QRCode(document.getElementById("qrcode"), {
             text: audioUrl,
             width: 256,
             height: 256
         });
+
+        // Verificar se há um parâmetro de áudio na URL e redirecionar
+        function handleRedirect() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const audioParam = urlParams.get('audio');
+            if (audioParam) {
+                window.location.href = audioParam;
+            }
+        }
+
+        // Chamar a função para verificar o parâmetro e redirecionar
+        handleRedirect();
     </script>
 </body>
 </html>
