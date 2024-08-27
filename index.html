@@ -3,23 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QR Code para Áudio</title>
+    <title>QR Code para Áudio Aleatório</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 </head>
 <body>
-    <h1>QR Code para Áudio</h1>
+    <h1>QR Code para Áudio Aleatório</h1>
     <div id="qrcode"></div>
 
     <script>
-        // URL absoluta do arquivo MP3 que o QR code vai apontar
-        const audioUrl = window.location.origin + '/audios/salmos23.mp3'; // Caminho do arquivo de áudio ajustado
+        // Lista de URLs de áudio
+        const audios = [
+            '/audios/audio1.mp3',
+            '/audios/audio2.mp3',
+            '/audios/audio3.mp3',
+            '/audios/audio4.mp3'
+        ];
 
-        // Gerar QR Code
-        const qrCode = new QRCode(document.getElementById("qrcode"), {
+        // Selecionar um áudio aleatório
+        function getRandomAudio() {
+            return audios[Math.floor(Math.random() * audios.length)];
+        }
+
+        // Gerar QR Code que aponta para a URL da página atual com um parâmetro de áudio aleatório
+        const audioUrl = `${window.location.origin}/index.html?audio=${encodeURIComponent(getRandomAudio())}`;
+
+        new QRCode(document.getElementById("qrcode"), {
             text: audioUrl,
             width: 256,
             height: 256
         });
+
+        // Verificar se há um parâmetro de áudio na URL e redirecionar
+        function handleRedirect() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const audioParam = urlParams.get('audio');
+            if (audioParam) {
+                window.location.href = audioParam;
+            }
+        }
+
+        // Chamar a função para verificar o parâmetro e redirecionar
+        handleRedirect();
     </script>
 </body>
 </html>
