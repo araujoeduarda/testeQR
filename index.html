@@ -16,23 +16,7 @@
             '/audios/audio1.mp3',
             '/audios/audio2.mp3',
             '/audios/audio3.mp3',
-            '/audios/audio4.mp3',
-            '/audios/audio5.mp3',
-            '/audios/audio6.mp3',
-            '/audios/audio7.mp3',
-            '/audios/audio8.mp3',
-            '/audios/audio9.mp3',
-            '/audios/audio10.mp3',
-            '/audios/audio11.mp3',
-            '/audios/audio12.mp3',
-            '/audios/audio13.mp3',
-            '/audios/audio14.mp3',
-            '/audios/audio15.mp3',
-            '/audios/audio16.mp3',
-            '/audios/audio17.mp3',
-            '/audios/audio18.mp3',
-            '/audios/audio19.mp3',
-            '/audios/audio20.mp3'
+            '/audios/audio4.mp3'
         ];
 
         // Selecionar um áudio aleatório
@@ -54,12 +38,7 @@
             const urlParams = new URLSearchParams(window.location.search);
             const audioParam = urlParams.get('audio');
             if (audioParam) {
-                // Cria um elemento de áudio e define o src para o áudio selecionado
-                const audioElement = document.createElement('audio');
-                audioElement.src = audioParam;
-                audioElement.autoplay = true; // Define o autoplay para verdadeiro
-                audioElement.controls = true; // Adiciona controles (opcional)
-                document.body.appendChild(audioElement); // Adiciona o elemento de áudio ao DOM
+                window.location.href = audioParam;
             }
         }
 
