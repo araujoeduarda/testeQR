@@ -3,20 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QR Code para Versículos</title>
+    <title>QR Code para Áudio</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 </head>
 <body>
-    <h1>QR Code para Versículos</h1>
+    <h1>QR Code para Áudio</h1>
     <div id="qrcode"></div>
 
     <script>
-        // URL absoluta para garantir que o QR code aponte para a página correta
-        const url = window.location.origin + "/versiculo.html";
+        // URL absoluta do arquivo MP3 que o QR code vai apontar
+        const audioUrl = window.location.origin + '/audios/salmos23.mp3'; // Caminho do arquivo de áudio ajustado
 
         // Gerar QR Code
         const qrCode = new QRCode(document.getElementById("qrcode"), {
-            text: url,
+            text: audioUrl,
             width: 256,
             height: 256
         });
