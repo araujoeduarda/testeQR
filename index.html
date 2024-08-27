@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code para Versículos</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+</head>
+<body>
+    <h1>QR Code para Versículos</h1>
+    <div id="qrcode"></div>
+
+    <script>
+        // URL que o QR Code irá apontar
+        const url = window.location.href.replace("index.html", "versiculo.html");
+
+        // Gerar QR Code
+        const qrCode = new QRCode(document.getElementById("qrcode"), {
+            text: url,
+            width: 256,
+            height: 256
+        });
+    </script>
+</body>
+</html>
